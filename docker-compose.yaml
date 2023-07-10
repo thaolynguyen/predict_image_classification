@@ -1,0 +1,30 @@
+version: "3.3"
+
+
+services:
+
+  backend:
+     image: backend_image:latest
+     container_name: backend
+     build: ./web-app/backend
+     ports:
+       - 5001:5001
+  
+     volumes:
+       - ./web-app/backend/:/app/ # this line sink every file i have in my backend in the folder app for my image and help make a live update of my files
+      #  - ./web-app/backend/server.py:/app/server.py:ro   # this is called bind volumes 
+                                                        # ":ro" means that my image will read only the files from backend
+
+
+  frontend:
+     image: frontend_image:latest
+     container_name: frontend
+     build: ./web-app/frontend
+     ports:
+       - 3001:3000
+
+    #  volumes:
+    #   #  - ./web-app/frontend/src:/app/src
+     depends_on:
+       - backend
+     

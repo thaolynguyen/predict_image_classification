@@ -1,0 +1,5 @@
+Flask==2.2.2
+Flask-Cors==3.0.10
+keras==2.8
+pillow==10.0.0
+# tensorflow==2.2.0
